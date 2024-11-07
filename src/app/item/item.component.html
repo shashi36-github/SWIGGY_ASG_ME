@@ -1,0 +1,91 @@
+<main> 
+    <app-navbar></app-navbar>
+    
+    <section class="px-96 py-10">
+        <p class="text-xs text-slate-500">Home / Hyderabad / Everythin' Restraunt</p>
+        <h1 class="text-2xl font-bold my-4">South Indian  Restraunt</h1>
+        <div class="border-[20px] p-4 flex flex-col justify-around min-h-52 rounded-3xl">
+            <div class="flex items-center">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"
+                    strokeColor="rgba(2, 6, 12, 0.92)" fillColor="rgba(2, 6, 12, 0.92)">
+                    <circle cx="10" cy="10" r="9" fill="url(#StoreRating20_svg__paint0_linear_32982_71567)"></circle>
+                    <path
+                        d="M10.0816 12.865C10.0312 12.8353 9.96876 12.8353 9.91839 12.865L7.31647 14.3968C6.93482 14.6214 6.47106 14.2757 6.57745 13.8458L7.27568 11.0245C7.29055 10.9644 7.26965 10.9012 7.22195 10.8618L4.95521 8.99028C4.60833 8.70388 4.78653 8.14085 5.23502 8.10619L8.23448 7.87442C8.29403 7.86982 8.34612 7.83261 8.36979 7.77777L9.54092 5.06385C9.71462 4.66132 10.2854 4.66132 10.4591 5.06385L11.6302 7.77777C11.6539 7.83261 11.706 7.86982 11.7655 7.87442L14.765 8.10619C15.2135 8.14085 15.3917 8.70388 15.0448 8.99028L12.7781 10.8618C12.7303 10.9012 12.7095 10.9644 12.7243 11.0245L13.4225 13.8458C13.5289 14.2757 13.0652 14.6214 12.6835 14.3968L10.0816 12.865Z"
+                        fill="white"></path>
+                    <defs>
+                        <linearGradient id="StoreRating20_svg__paint0_linear_32982_71567" x1="10" y1="1" x2="10" y2="19"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#21973B"></stop>
+                            <stop offset="1" stop-color="#128540"></stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1 class="font-bold ml-2">4.1 (33K+ ratings) . ₹150 for two</h1>
+            </div>
+            <p class="text-orange-600 underline font-semibold">Dosa,Idli,Poori,Vada...</p>
+            <p class="font-bold">20-25 mins</p>
+        </div>
+    </section>
+    <section class="px-96 pb-10">
+        <h1 class="font-bold text-2xl mb-4">Deals for you</h1>
+        <div class="overflow-y-scroll no-scrollbar">
+            <div class="flex">
+                <div class="border-2 p-4 flex border-slate-200 rounded-xl mr-4 min-w-[300px]">
+                    <img class="size-16 mr-2"
+                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/rng/md/ads/production/d07196b25b85d1fd9951e10c255ab737" />
+                    <div>
+                        <h1 class="font-bold">Extra 25₹ Off</h1>
+                        <p>APPLICABLE OVER & ABOVE COUPONS</p>
+                    </div>
+                </div>
+                <div class="border-2 p-4 flex border-slate-200 rounded-xl mr-4 min-w-[300px]">
+                    <img class="size-16 mr-2"
+                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/rng/md/ads/production/sxpqfawqimysnby0vpfe" />
+                    <div>
+                        <h1 class="font-bold">Buy One Get One Free</h1>
+                        <p>USE BOGO</p>
+                    </div>
+                </div>
+                <div class="border-2 p-4 flex border-slate-200 rounded-xl mr-4 min-w-[300px]">
+                    <img class="size-16 mr-2"
+                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/MARKETING_BANNERS/IMAGES/OFFERS/2024/10/21/b115666c-94e4-4f6d-819d-c6e4e464326a_Axis.png" />
+                    <div>
+                        <h1 class="font-bold">Extra 10% Off</h1>
+                        <p>USE AXISFEXT</p>
+                    </div>
+                </div>
+                <div class="border-2 p-4 flex border-slate-200 rounded-xl mr-4 min-w-[300px]">
+                    <img class="size-16 mr-2"
+                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/rng/md/ads/production/d07196b25b85d1fd9951e10c255ab737" />
+                    <div>
+                        <h1 class="font-bold">Extra 25₹ Off</h1>
+                        <p>APPLICABLE OVER & ABOVE COUPONS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="px-96 pb-10">
+        <h1 class="font-bold text-2xl mb-4">Top Picks</h1>
+        <div class="flex overflow-y-scroll no-scrollbar">
+        
+            <div *ngFor="let item of dishes">
+                <div
+                    [ngStyle]="{'background-image': 'url(' + item.src + ')'}"
+                    class="p-4 bg-cover bg-center text-white min-w-80 rounded-xl mr-4 min-h-[290px] flex flex-col justify-between">
+                    
+                    <p class="text-xl bg-black bg-opacity-70 p-1 rounded">{{item.title}}</p>
+                    
+                    <div class="flex justify-between items-center mt-2 bg-black bg-opacity-70 p-2 rounded">
+                        <p>₹{{item.price}}</p>
+                        <button (click)="cart1(item)" class="bg-white text-green-600 font-bold p-2 rounded-md">Add Item</button>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </section>
+    
+    
+</main>
+
+

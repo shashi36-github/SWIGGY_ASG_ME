@@ -1,0 +1,129 @@
+<div class="bg-white font-sans h-screen">
+    <div class="container mx-auto p-4 h-full">
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex items-center">
+                <a><svg class="VXJlj" viewBox="0 0 61 61" height="49" width="49">
+                    <g clip-path="url(#a)">
+                        <path fill="#FF5200" d="M.32 30.5c0-12.966 0-19.446 3.498-23.868a16.086 16.086 0 0 1 2.634-2.634C10.868.5 17.354.5 30.32.5s19.446 0 23.868 3.498c.978.774 1.86 1.656 2.634 2.634C60.32 11.048 60.32 17.534 60.32 30.5s0 19.446-3.498 23.868a16.086 16.086 0 0 1-2.634 2.634C49.772 60.5 43.286 60.5 30.32 60.5s-19.446 0-23.868-3.498a16.086 16.086 0 0 1-2.634-2.634C.32 49.952.32 43.466.32 30.5Z"></path>
+                        <path fill="#fff" fill-rule="evenodd" d="M32.317 24.065v-6.216a.735.735 0 0 0-.732-.732.735.735 0 0 0-.732.732v7.302c0 .414.336.744.744.744h.714c10.374 0 11.454.54 10.806 2.73-.03.108-.066.21-.102.324-.006.024-.012.048-.018.066-2.724 8.214-10.092 18.492-12.27 21.432a.764.764 0 0 1-1.23 0c-1.314-1.776-4.53-6.24-7.464-11.304-.198-.462-.294-1.542 2.964-1.542h3.984c.222 0 .402.18.402.402v3.216c0 .384.282.738.666.768a.73.73 0 0 0 .582-.216.701.701 0 0 0 .216-.516v-4.362a.76.76 0 0 0-.756-.756h-8.052c-1.404 0-2.256-1.2-2.814-2.292-1.752-3.672-3.006-7.296-3.006-10.152 0-7.314 5.832-13.896 13.884-13.896 7.17 0 12.6 5.214 13.704 11.52.006.054.048.294.054.342.288 3.096-7.788 2.742-11.184 2.76a.357.357 0 0 1-.36-.36v.006Z" clip-rule="evenodd"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="a">
+                            <path fill="#fff" d="M.32.5h60v60h-60z"></path>
+                        </clipPath>
+                    </defs>
+                </svg></a>
+                <h1 class="text-xl font-bold ml-2">SECURE CHECKOUT</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a class="text-gray-600" href="#">Help</a>
+                <button (click)="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div *ngIf="items.length > 0" class="flex flex-col lg:flex-row lg:space-x-4 h-[calc(100vh-80px)]">
+            <div class="flex flex-col lg:flex-row lg:space-x-4 h-[calc(100vh-80px)]">
+                <!-- Left Column (Reduced Width) -->
+                <div class="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-md mb-6 lg:mb-0 h-full overflow-y-auto">
+                    <div class="mb-6">
+                        <div class="flex items-center mb-2">
+                            <div class="bg-gray-800 text-white p-2 rounded-full mr-2">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h2 class="text-lg font-bold">Logged in <i class="fas fa-check-circle text-green-500"></i></h2>
+                        </div>
+                        <div  *ngIf="userName">
+                            Welcome, {{ userName }}!
+                        </div>
+                        
+                    </div>
+                    <hr class="my-4" />
+                    <div class="mb-6">
+                        <div class="flex items-center mb-2">
+                            <div class="bg-gray-800 text-white p-2 rounded-full mr-2">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h2 class="text-lg font-bold">Delivery address <i class="fas fa-check-circle text-green-500"></i></h2>
+                        </div>
+                        <p>Home</p>
+                        <p>1, 36-12-13/5, Woodepeta, Mogalrajapuram, Revenue Colony Park, Mogalrajapuram, Sidhartha Nagar, Labbipet, Vijayawada, Andhra Pradesh 520010, India</p>
+                        <p>33 MINS</p>
+                        <a class="text-orange-500" href="#">CHANGE</a>
+                    </div>
+                    <hr class="my-4" />
+                    <div>
+                        <h2 class="text-lg font-bold mb-4">Choose payment method</h2>
+                        <button class="bg-green-500 text-white py-2 px-4 rounded w-full lg:w-auto" (click)="proceedToPayment()">PROCEED TO PAY</button>
+                    </div>
+                </div>
+    
+                <!-- Right Column (Increased Width) -->
+                <div class="w-full lg:w-1/2 h-full">
+                    <div class="bg-white p-6 rounded-lg shadow-md h-full overflow-y-auto">
+                        <div class="flex items-center mb-4">
+                            <img alt="Restaurant Image" class="w-12 h-12 rounded-full mr-2" height="50" src="https://storage.googleapis.com/a1aa/image/60gcFJtpxColJ5jKez5lyo3m4vVYbO3AFs5uLiOvVQJOV92JA.jpg" width="50"/>
+                            <div>
+                                <h3 class="text-lg font-bold">South Indian Restaurant</h3>
+                                <p class="text-gray-600">Guntur</p>
+                            </div>
+                        </div>
+    
+                        <div>
+                            <table class="table-auto w-full border-collapse border border-gray-200">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="px-4 py-2 border border-gray-200">SNo</th>
+                                        <th class="px-4 py-2 border border-gray-200">Item Name</th>
+                                        <th class="px-4 py-2 border border-gray-200">Price</th>
+                                        <th class="px-4 py-2 border border-gray-200">Quantity</th>
+                                        <th class="px-4 py-2 border border-gray-200">Total Price</th>
+                                        <th class="px-4 py-2 border border-gray-200"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of items; let i=index" class="border-b border-gray-200">
+                                        <td class="px-4 py-2 text-center">{{i + 1}}</td>
+                                        <td class="px-4 py-2 text-center">{{item.title}}</td>
+                                        <td class="px-4 py-2 text-center">{{item.price}}</td>
+                                        <td class="px-4 py-2 text-center">
+                                            <button class="btn bg-gray-200  px-2 py-1 rounded-md" (click)="dec(item.title)">-</button>
+                                            {{item.qty}}
+                                            <button class="btn bg-gray-200  px-2 py-1 rounded-md" (click)="inc(item.title)">+</button>
+                                        </td>
+                                        <td class="px-4 py-2 text-center">{{item.qty * item.price}}</td>
+                                        <td class="px-4 py-2 text-center">
+                                            <button class="btn bg-[#ff5200] text-white px-3 py-1 rounded" (click)="remove1(item.title)">Remove</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="font-bold">
+                                        <td colspan="4" class="px-4 py-2 text-center">Total Amount</td>
+                                        <td class="px-4 py-2 text-center">{{grandTotal()}}</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="items.length === 0"class="flex items-center justify-center min-h-screen bg-white">
+            <div class="text-center">
+             <img alt="Illustration of a kitchen with a stove and a pan with vegetables" class="mx-auto mb-6" height="200" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0" width="300"/>
+             <h1 class="text-2xl font-semibold text-gray-800 mb-2">
+              Your cart is empty
+             </h1>
+             <p class="text-gray-500 mb-6">
+              You can go to home page to view more restaurants
+             </p>
+             <button  class="bg-orange-500 text-white font-semibold py-2 px-4 rounded" routerLink="/home">
+              SEE RESTAURANTS NEAR YOU
+             </button>
+            </div>
+        </div>
+        
+
+        
+    </div>
+</div>

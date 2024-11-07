@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<section class="bg-white-100 px-4 sm:px-8 lg:px-16 mt-16"> <!-- Added mt-16 for top margin -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-2">Breakfast Restaurants</h1>
+        <p class="text-lg text-gray-600 mb-6">
+            Taste these delectable classics, delectable biryanis to make your day.
+        </p>
+        
+        <!-- Filter Buttons -->
+        <div class="flex items-center space-x-4 mb-6">
+            <button (click)="setType('veg')" class="px-4 py-2 bg-gray-200 rounded-full">Veg</button>
+            <button (click)="setType('non-veg')" class="px-4 py-2 bg-gray-200 rounded-full">Non-Veg</button>
+            <button (click)="setType('all')" class="px-4 py-2 bg-gray-200 rounded-full">All</button>
+            <!-- Additional filters -->
+            <button class="px-4 py-2 bg-gray-200 rounded-full">Sort By</button>
+            <button class="px-4 py-2 bg-gray-200 rounded-full">Less than 30 mins</button>
+            <button class="px-4 py-2 bg-gray-200 rounded-full">Rs. 300-Rs. 600</button>
+            <button class="px-4 py-2 bg-gray-200 rounded-full">Less than Rs. 300</button>
+        </div>
+
+        <h2 class="text-2xl font-bold mb-4">Restaurants to explore</h2>
+        <div class="grid grid-cols-3 gap-6">
+            <div *ngFor="let res of filteredRestaurants" class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="relative">
+                    <img alt="{{ res.name }}" class="w-full h-40 object-cover" height="400" [src]="res.imageUrl" width="600"/>
+                    <div class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+                        {{ res.offers[0] }}
+                    </div>
+                    <div class="absolute bottom-2 left-2 bg-black text-white text-sm px-2 py-1 rounded">
+                        {{ res.offers[1] }}
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-bold mb-2">
+                        <a [routerLink]="['/res', res.id]"  class="text-blue-600 hover:underline">{{ res.name }}</a>
+                    </h3>
+                    <div class="flex items-center text-sm text-gray-600 mb-2">
+                        <i class="fas fa-star text-green-500 mr-1"></i>
+                        <span>{{ res.rating }} · {{ res.distance }}</span>
+                    </div>
+                    <p class="text-sm text-gray-600">{{ res.cuisine }}</p>
+                    <p class="text-sm text-gray-600">{{ res.location }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
