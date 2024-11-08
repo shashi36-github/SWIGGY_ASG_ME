@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `https://swiggy-asg-me.vercel.app/` , to run in the vs code `install npm ` and then run the `ng serve`
+To run the deployed app  [Angular CLI](https://swiggy-asg-me.vercel.app/) , to run in the vs code `npm install` and then run the `ng serve`
 
 ## Code scaffolding
 
