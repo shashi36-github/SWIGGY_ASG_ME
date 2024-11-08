@@ -1,0 +1,68 @@
+/* navbar.component.css */
+
+/* Hide scrollbar for mobile menu */
+#mobileMenu::-webkit-scrollbar {
+    display: none;
+}
+
+#mobileMenu {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Transition for dropdown menus */
+#dropdownMenu,
+#mobileMenu {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ensure dropdown menus are above other content */
+#dropdownMenu,
+#mobileMenu {
+    z-index: 1000;
+}
+
+/* Style adjustments for better alignment */
+a {
+    display: flex;
+    align-items: center;
+}
+
+a i {
+    margin-right: 0.5rem;
+}
+
+/* Hover and focus transitions */
+a:hover,
+button:hover {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+button:focus,
+a:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 82, 0, 0.5); /* Orange focus ring */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    /* Adjust font sizes for mobile */
+    .text-base {
+        font-size: 1rem;
+    }
+
+    .text-lg {
+        font-size: 1.125rem;
+    }
+
+    /* Ensure the mobile menu items are properly spaced */
+    #mobileMenu a {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Adjust icon sizes for better visibility */
+    .fa-shopping-cart {
+        font-size: 1.25rem;
+    }
+}

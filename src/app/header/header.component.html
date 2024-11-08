@@ -1,17 +1,134 @@
-<div class="bg-[#ff5200] text-white">
-    <header class="bg-[#ff5200] text-white mx-10 flex flex-col md:flex-row justify-between items-center p-7">
-      <div class="flex items-center space-x-2">
-        <a href="/home">
-          <img alt="Swiggy logo" height="48px" width="160px" loading="lazy" src="https://res.cloudinary.com/dutdah0l9/image/upload/v1720058694/Swiggy_logo_bml6he.png" />
+<!-- Enhanced Header Section -->
+<header class="bg-[#ff5200] text-white fixed top-0 left-0 right-0 z-50 shadow-md">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo Section -->
+      <div class="flex-shrink-0">
+        <a href="/home" class="flex items-center">
+          <img 
+            src="https://res.cloudinary.com/dutdah0l9/image/upload/v1720058694/Swiggy_logo_bml6he.png" 
+            alt="Swiggy Logo" 
+            class="h-12 w-auto" 
+            loading="lazy"
+          />
         </a>
       </div>
-      <nav class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 md:ml-4">
-        <a class="text-white font-bold px-3 py-2" href="https://www.swiggy.com/corporate/">Swiggy Corporate</a>
-        <a class="text-white font-bold px-3 py-2" href="https://partner.swiggy.com/login#/swiggy">Partner with us</a>
-        <a class="text-white font-bold border border-white rounded-md px-6 py-2" href="#">Get the App</a>
-        <a routerLink="/login" routerLinkActive  class="bg-black text-white font-bold rounded-md px-6 py-2" >Sign up</a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-4">
+        <a 
+          href="https://www.swiggy.com/corporate/" 
+          class="text-white font-semibold px-3 py-2 rounded-md hover:bg-[#e04e00] transition-colors"
+        >
+          Swiggy Corporate
+        </a>
+        <a 
+          href="https://partner.swiggy.com/login#/swiggy" 
+          class="text-white font-semibold px-3 py-2 rounded-md hover:bg-[#e04e00] transition-colors"
+        >
+          Partner with Us
+        </a>
+        <a 
+          href="#" 
+          class="border border-white text-white font-semibold px-4 py-2 rounded-md hover:bg-white hover:text-[#ff5200] transition-colors"
+        >
+          Get the App
+        </a>
+        <a 
+          routerLink="/login" 
+          routerLinkActive="active" 
+          class="bg-black text-white font-semibold px-4 py-2 rounded-md hover:bg-gray-800 transition-colors"
+        >
+          Sign Up
+        </a>
       </nav>
-    </header>
-  
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button 
+          type="button" 
+          class="text-white hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#ff5200] focus:ring-white" 
+          aria-controls="mobile-menu" 
+          aria-expanded="false" 
+          id="mobile-menu-button"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed -->
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </div>
-  
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div class="md:hidden" id="mobile-menu" aria-labelledby="mobile-menu-button" hidden>
+    <nav class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a 
+        href="https://www.swiggy.com/corporate/" 
+        class="block text-white font-semibold px-3 py-2 rounded-md hover:bg-[#e04e00] transition-colors"
+      >
+        Swiggy Corporate
+      </a>
+      <a 
+        href="https://partner.swiggy.com/login#/swiggy" 
+        class="block text-white font-semibold px-3 py-2 rounded-md hover:bg-[#e04e00] transition-colors"
+      >
+        Partner with Us
+      </a>
+      <a 
+        href="#" 
+        class="block border border-white text-white font-semibold px-4 py-2 rounded-md hover:bg-white hover:text-[#ff5200] transition-colors"
+      >
+        Get the App
+      </a>
+      <a 
+        routerLink="/login" 
+        routerLinkActive="active" 
+        class="block bg-black text-white font-semibold px-4 py-2 rounded-md hover:bg-gray-800 transition-colors"
+      >
+        Sign Up
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- Backdrop Overlay for Mobile Menu -->
+<div 
+  id="mobile-menu-backdrop" 
+  class="fixed inset-0 bg-black opacity-50 z-40 hidden"
+  aria-hidden="true"
+></div>
+
+<!-- Tailwind CSS CDN (Ensure this is included in your HTML <head> section) -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<!-- Font Awesome CDN (Ensure this is included in your HTML <head> section) -->
+<link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+  integrity="sha512-pV3rLx9+..." 
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer" 
+/>
+
+<!-- JavaScript for Mobile Menu Toggle -->
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('mobile-menu-backdrop');
+
+  menuButton.addEventListener('click', () => {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', !isExpanded);
+    mobileMenu.hidden = isExpanded;
+    backdrop.hidden = isExpanded;
+  });
+
+  backdrop.addEventListener('click', () => {
+    menuButton.setAttribute('aria-expanded', 'false');
+    mobileMenu.hidden = true;
+    backdrop.hidden = true;
+  });
+</script>

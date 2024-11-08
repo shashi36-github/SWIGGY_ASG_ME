@@ -1,32 +1,150 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
+interface Restaurant {
+  name: string;
+  cuisine: string;
+  priceForTwo: string;
+  location: string;
+  distance: string;
+  rating: string;
+  offers: string[];
+  imageUrl: string;
+}
+
+interface FoodCategory {
+  name: string;
+  imageUrl: string;
+  navigateTo: () => void;
+}
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent,FooterComponent,CommonModule],
+  imports: [HeaderComponent, FooterComponent, CommonModule, RouterLink],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css'] // Corrected from 'styleUrl' to 'styleUrls'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
 
+  constructor(private router: Router) {}
 
-  scrollToLast(item: String) {
-    const el = document.getElementById(`${item}-end`);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Scroll Functions with Debounce for Performance
+  private scrollSubject = new Subject<string>();
+  private scrollSubscription: any;
+
+  ngOnInit() {
+    this.scrollSubscription = this.scrollSubject.pipe(
+      debounceTime(300)
+    ).subscribe((item) => {
+      this.performScroll(item);
+    });
+  }
+
+  scrollToLast(item: string) {
+    this.scrollSubject.next(item);
+  }
+
+  scrollToFirst(item: string) {
+    this.scrollSubject.next(item);
+  }
+
+  performScroll(item: string) {
+    const elStart = document.getElementById(`${item}-start`);
+    const elEnd = document.getElementById(`${item}-end`);
+    if (elStart) {
+      elStart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (elEnd) {
+      elEnd.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
-  scrollToFirst(item: String) {
-    const el = document.getElementById(`${item}-start`);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  ngOnDestroy() {
+    if (this.scrollSubscription) {
+      this.scrollSubscription.unsubscribe();
     }
   }
-  restaurants = [
+
+  // Navigation Functions
+  navigateToRestaurants() {
+    this.router.navigate(['/restaurants']); // Navigate to the restaurants component
+  }
+
+  navigateToBreakFastRestaurants() {
+    this.router.navigate(['/breakfast']); // Navigate to the breakfast restaurants component
+  }
+
+  navigateToFastFoodRestaurants() {
+    this.router.navigate(['/fastfood']); // Navigate to the fast food restaurants component
+  }
+
+  navigateToItem() {
+    this.router.navigate(['/item']); // Navigate to the item component
+  }
+
+  // Food Categories Data
+  foodCategories: FoodCategory[] = [
+    {
+      name: "Dosa",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Dosa.png",
+      navigateTo: () => this.navigateToBreakFastRestaurants()
+    },
+    {
+      name: "Idli",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Idli.png",
+      navigateTo: () => this.navigateToBreakFastRestaurants()
+    },
+    {
+      name: "Poori",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Poori.png",
+      navigateTo: () => this.navigateToBreakFastRestaurants()
+    },
+    {
+      name: "Vada",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Vada.png",
+      navigateTo: () => this.navigateToBreakFastRestaurants()
+    },
+    {
+      name: "Biryani",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Biryani.png",
+      navigateTo: () => this.navigateToRestaurants()
+    },
+    {
+      name: "Khichdi",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Khichdi.png",
+      navigateTo: () => this.navigateToRestaurants()
+    },
+    {
+      name: "Chole Bhature",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Chole%20Bhature.png",
+      navigateTo: () => this.navigateToBreakFastRestaurants()
+    },
+    {
+      name: "Paratha",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Paratha.png",
+      navigateTo: () => this.navigateToBreakFastRestaurants()
+    },
+    {
+      name: "Cake",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Cake.png",
+      navigateTo: () => this.navigateToFastFoodRestaurants()
+    },
+    {
+      name: "Omelette",
+      imageUrl: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Omelette.png",
+      navigateTo: () => this.navigateToBreakFastRestaurants()
+    }
+  ];
+
+  // Restaurants Data
+  restaurants: Restaurant[] = [
     {
       name: "Hotel Vdara",
       cuisine: "North Indian • South Indian",
@@ -74,30 +192,14 @@ export class HomeComponent {
       location: "One Town, Vijayawada",
       distance: "5 km",
       rating: "3.9",
-      offers: ["Flat 20% off on takeaway", "Special 5%discounts on weekends"],
+      offers: ["Flat 20% off on takeaway", "Special 5% discounts on weekends"],
       imageUrl: "https://storage.googleapis.com/a1aa/image/b29C7yDutMboP1bvQdfKhISpDGlpIUmo5YtuglPp5GPBI22JA.jpg",
     }
   ];
-  
 
+  // TrackBy Function for Performance Optimization
+  trackById(index: number, restaurant: Restaurant): number {
+    return index;
+  }
 
-  constructor(private router: Router) {}
-
-  navigateToRestaurants() {
-    this.router.navigate(['/restaurants']); // Navigate to the item component
-  }
-  navigateToBreakFastRestaurants() {
-    this.router.navigate(['/breakfast']); // Navigate to the item component
-  }
-  navigateToFastFoodRestaurants() {
-    this.router.navigate(['/fastfood']); // Navigate to the item component
-  }
-  navigateToItem() {
-    this.router.navigate(['/item']); // Navigate to the item component
-  }
 }
-
-
-
-
-

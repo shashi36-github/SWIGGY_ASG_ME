@@ -1,7 +1,69 @@
+/* home.component.css */
+
+/* Hide scrollbar for specific elements */
 .no-scrollbar::-webkit-scrollbar {
     display: none;
-}
-.no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* Custom Font Family (ensure the font file is correctly placed) */
+  @font-face {
+    font-family: 'Gilroy_Bold';
+    src: url('/assets/fonts/Gilroy-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  /* Animations */
+  
+  /* Fade-In Animation */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  
+  /* Slide-In Left Animation */
+  @keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  .animate-slide-in-left {
+    animation: slide-in-left 1s ease-out forwards;
+  }
+  
+  /* Slide-In Right Animation */
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 1s ease-out forwards;
+  }
+  
+  /* Pulse Animation for Underline */
+  @keyframes pulse {
+    0%, 100% { transform: scaleX(1); opacity: 1; }
+    50% { transform: scaleX(1.5); opacity: 0.5; }
+  }
+  
+  .animate-pulse {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Optional: Group Hover for Food Categories */
+  .group:hover .group-hover\:opacity-50 {
+    opacity: 0.5;
+  }
+  
+  /* Add any other custom styles as needed */
+  

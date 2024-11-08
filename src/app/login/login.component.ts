@@ -1,44 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { RegistrationServiceService } from '../register/registration-service.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common'; // Import CommonModule
+import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
+
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,RouterLink,NavbarComponent,FooterComponent ],
+  imports: [FormsModule, HttpClientModule, CommonModule,RouterLink,FooterComponent], // Add CommonModule here
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css'] // Corrected property name
 })
 export class LoginComponent {
-  phone = '';
+  phone: string = '';
+  password: string = '';
 
-  constructor(private registrationService: RegistrationServiceService, private router: Router) {}
+  constructor(private router: Router) {}
 
   onSubmit() {
-    if (!this.phone) {
-      alert("Please enter a phone number.");
-      return;
-    }
-
-    this.registrationService.checkPhoneNumber(this.phone).subscribe({
-      next: (users) => {
-        if (users.length > 0) {
-          const user=users[0];
-          localStorage.setItem('authToken', users.token);
-          localStorage.setItem('userId', user.phone); 
-          localStorage.setItem('userId', user.name); 
-          this.router.navigate(['/item']);
-        } else {
-          alert("User not found. Please register an account.");
-        }
-      },
-      error: (error) => {
-        console.error("Error checking phone number:", error);
-      }
-    });
+    // Implement your login logic here
+    console.log('Login submitted with Phone:', this.phone, 'Password:', this.password);
+    // Navigate to dashboard or home page upon successful login
+    this.router.navigate(['/home']);
   }
 }
-

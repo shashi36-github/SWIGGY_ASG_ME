@@ -1,32 +1,103 @@
 <app-navbar></app-navbar>
-<section class="bg-white-100 px-4 sm:px-8 lg:px-16 mt-16"> <!-- Added mt-16 for top margin -->
+<section class="bg-white px-4 sm:px-8 lg:px-16 mt-16"> <!-- Corrected bg-white class -->
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold mb-2">Restaurants</h1>
-        <p class="text-lg text-gray-600 mb-6">
-            Taste these delectable classics, delectable biryanis to make your day.
+        <h1 class="text-4xl font-bold mb-2 text-center">Restaurants</h1>
+        <p class="text-lg text-gray-600 mb-6 text-center">
+            Taste these delectable classics and biryanis to make your day.
         </p>
         
         <!-- Filter Buttons -->
-        <div class="flex items-center space-x-4 mb-6">
-            <button (click)="setType('veg')" class="px-4 py-2 bg-gray-200 rounded-full">Veg</button>
-            <button (click)="setType('non-veg')" class="px-4 py-2 bg-gray-200 rounded-full">Non-Veg</button>
-            <button (click)="setType('all')" class="px-4 py-2 bg-gray-200 rounded-full">All</button>
-            <!-- Additional filters -->
-            <button class="px-4 py-2 bg-gray-200 rounded-full">Sort By</button>
-            <button class="px-4 py-2 bg-gray-200 rounded-full">Less than 30 mins</button>
-            <button class="px-4 py-2 bg-gray-200 rounded-full">Rs. 300-Rs. 600</button>
-            <button class="px-4 py-2 bg-gray-200 rounded-full">Less than Rs. 300</button>
+        <div class="flex flex-wrap justify-center items-center space-x-2 sm:space-x-4 mb-6">
+            <button 
+                (click)="setType('veg')" 
+                [ngClass]="{
+                    'bg-blue-500 text-white': selectedType === 'veg',
+                    'bg-gray-200 text-gray-700': selectedType !== 'veg'
+                }"
+                class="px-4 py-2 rounded-full transition duration-300 m-1"
+            >
+                Veg
+            </button>
+            <button 
+                (click)="setType('non-veg')" 
+                [ngClass]="{
+                    'bg-blue-500 text-white': selectedType === 'non-veg',
+                    'bg-gray-200 text-gray-700': selectedType !== 'non-veg'
+                }"
+                class="px-4 py-2 rounded-full transition duration-300 m-1"
+            >
+                Non-Veg
+            </button>
+            <button 
+                (click)="setType('all')" 
+                [ngClass]="{
+                    'bg-blue-500 text-white': selectedType === 'all',
+                    'bg-gray-200 text-gray-700': selectedType !== 'all'
+                }"
+                class="px-4 py-2 rounded-full transition duration-300 m-1"
+            >
+                All
+            </button>
+            <!-- Additional filters with toggle functionality -->
+            <button 
+                (click)="toggleSortOrder()" 
+                [ngClass]="{
+                    'bg-green-500 text-white': sortOrder === 'desc',
+                    'bg-gray-200 text-gray-700': sortOrder !== 'desc'
+                }"
+                class="px-4 py-2 rounded-full transition duration-300 m-1"
+            >
+                Sort By Rating {{ sortOrder === 'asc' ? '↑' : '↓' }}
+            </button>
+            <button 
+                (click)="toggleDeliveryTime()" 
+                [ngClass]="{
+                    'bg-green-500 text-white': deliveryTimeFilter,
+                    'bg-gray-200 text-gray-700': !deliveryTimeFilter
+                }"
+                class="px-4 py-2 rounded-full transition duration-300 m-1"
+            >
+                Less than 30 mins
+            </button>
+            <button 
+                (click)="togglePriceRange('300-600')" 
+                [ngClass]="{
+                    'bg-green-500 text-white': priceRange === '300-600',
+                    'bg-gray-200 text-gray-700': priceRange !== '300-600'
+                }"
+                class="px-4 py-2 rounded-full transition duration-300 m-1"
+            >
+                Rs. 300-Rs. 600
+            </button>
+            <button 
+                (click)="togglePriceRange('below-300')" 
+                [ngClass]="{
+                    'bg-green-500 text-white': priceRange === 'below-300',
+                    'bg-gray-200 text-gray-700': priceRange !== 'below-300'
+                }"
+                class="px-4 py-2 rounded-full transition duration-300 m-1"
+            >
+                Less than Rs. 300
+            </button>
         </div>
 
-        <h2 class="text-2xl font-bold mb-4">Restaurants to explore</h2>
-        <div class="grid grid-cols-3 gap-6">
-            <div *ngFor="let res of filteredRestaurants" class="bg-white rounded-lg shadow-md overflow-hidden">
+        <h2 class="text-2xl font-bold mb-4 text-center">Restaurants to Explore</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div 
+                *ngFor="let res of filteredRestaurants; trackBy: trackByName" 
+                class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
                 <div class="relative">
-                    <img alt="{{ res.name }}" class="w-full h-40 object-cover" height="400" [src]="res.imageUrl" width="600"/>
+                    <img 
+                        [alt]="res.name" 
+                        class="w-full h-40 object-cover" 
+                        [src]="res.imageUrl" 
+                        loading="lazy"
+                    />
                     <div class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
                         {{ res.offers[0] }}
                     </div>
-                    <div class="absolute bottom-2 left-2 bg-black text-white text-sm px-2 py-1 rounded">
+                    <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white text-sm px-2 py-1 rounded">
                         {{ res.offers[1] }}
                     </div>
                 </div>

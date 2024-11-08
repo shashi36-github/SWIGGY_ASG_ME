@@ -1,33 +1,97 @@
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <div class="w-full max-w-sm bg-white shadow-lg rounded-lg p-8">
-      <div class="w-full space-y-6">
-        <h2 class="text-3xl font-semibold text-gray-800 text-center mb-6">Register</h2>
-        <form (ngSubmit)="onSubmit()" class="space-y-6">
-          
-          <div class="mb-4">
-            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
-            <input type="number" id="phone" [(ngModel)]="phone" name="phone" required
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" placeholder="Enter Phone Number">
+  <div class="w-full max-w-sm bg-white shadow-lg rounded-lg p-8">
+    <div class="w-full space-y-6">
+      <h2 class="text-3xl font-semibold text-gray-800 text-center mb-6">Register</h2>
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="space-y-6">
+        
+        <!-- Phone Number Field -->
+        <div class="mb-4">
+          <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            [(ngModel)]="phone" 
+            name="phone" 
+            #phoneModel="ngModel"
+            required
+            pattern="^[0-9]{10}$"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" 
+            placeholder="Enter Phone Number">
+          <!-- Validation Errors -->
+          <div *ngIf="phoneModel.invalid && (phoneModel.dirty || phoneModel.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="phoneModel.errors?.['required']">Phone number is required.</div>
+            <div *ngIf="phoneModel.errors?.['pattern']">Enter a valid 10-digit phone number.</div>
           </div>
-          
-          <div class="mb-4">
-            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
-            <input type="text" id="name" [(ngModel)]="name" name="name" required
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" placeholder="Enter Name">
+        </div>
+        
+        <!-- Name Field -->
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            [(ngModel)]="name" 
+            name="name" 
+            #nameModel="ngModel"
+            required
+            minlength="2"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" 
+            placeholder="Enter Name">
+          <!-- Validation Errors -->
+          <div *ngIf="nameModel.invalid && (nameModel.dirty || nameModel.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="nameModel.errors?.['required']">Name is required.</div>
+            <div *ngIf="nameModel.errors?.['minlength']">Name must be at least 2 characters long.</div>
           </div>
-          
-          <div class="mb-4">
-            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-            <input type="email" id="email" [(ngModel)]="email" name="email" required
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" placeholder="Enter Email">
+        </div>
+        
+        <!-- Email Field -->
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            [(ngModel)]="email" 
+            name="email" 
+            #emailModel="ngModel"
+            required
+            email
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" 
+            placeholder="Enter Email">
+          <!-- Validation Errors -->
+          <div *ngIf="emailModel.invalid && (emailModel.dirty || emailModel.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="emailModel.errors?.['required']">Email is required.</div>
+            <div *ngIf="emailModel.errors?.['email']">Enter a valid email address.</div>
           </div>
-          
-          <button type="submit"
-            class="w-full bg-blue-500 text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out">
-            Submit
-          </button>
-        </form>
-      </div>
+        </div>
+        
+        <!-- Password Field -->
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            [(ngModel)]="password" 
+            name="password" 
+            #passwordModel="ngModel"
+            required
+            minlength="6"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" 
+            placeholder="Enter Password">
+          <!-- Validation Errors -->
+          <div *ngIf="passwordModel.invalid && (passwordModel.dirty || passwordModel.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="passwordModel.errors?.['required']">Password is required.</div>
+            <div *ngIf="passwordModel.errors?.['minlength']">Password must be at least 6 characters long.</div>
+          </div>
+        </div>
+        
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          [disabled]="registerForm.invalid"
+          class="w-full bg-blue-500 text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out disabled:opacity-50">
+          Submit
+        </button>
+      </form>
     </div>
   </div>
-  
+</div>

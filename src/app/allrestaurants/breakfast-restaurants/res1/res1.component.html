@@ -1,91 +1,161 @@
-<main> 
+<main>
     <app-navbar></app-navbar>
-    
-    <section class="px-96 py-10">
-        <p class="text-xs text-slate-500">Home / Hyderabad / Everythin' Restraunt</p>
-        <h1 class="text-2xl font-bold my-4">Idli House</h1>
-        <div class="border-[20px] p-4 flex flex-col justify-around min-h-52 rounded-3xl">
-            <div class="flex items-center">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"
-                    strokeColor="rgba(2, 6, 12, 0.92)" fillColor="rgba(2, 6, 12, 0.92)">
-                    <circle cx="10" cy="10" r="9" fill="url(#StoreRating20_svg__paint0_linear_32982_71567)"></circle>
-                    <path
-                        d="M10.0816 12.865C10.0312 12.8353 9.96876 12.8353 9.91839 12.865L7.31647 14.3968C6.93482 14.6214 6.47106 14.2757 6.57745 13.8458L7.27568 11.0245C7.29055 10.9644 7.26965 10.9012 7.22195 10.8618L4.95521 8.99028C4.60833 8.70388 4.78653 8.14085 5.23502 8.10619L8.23448 7.87442C8.29403 7.86982 8.34612 7.83261 8.36979 7.77777L9.54092 5.06385C9.71462 4.66132 10.2854 4.66132 10.4591 5.06385L11.6302 7.77777C11.6539 7.83261 11.706 7.86982 11.7655 7.87442L14.765 8.10619C15.2135 8.14085 15.3917 8.70388 15.0448 8.99028L12.7781 10.8618C12.7303 10.9012 12.7095 10.9644 12.7243 11.0245L13.4225 13.8458C13.5289 14.2757 13.0652 14.6214 12.6835 14.3968L10.0816 12.865Z"
-                        fill="white"></path>
-                    <defs>
-                        <linearGradient id="StoreRating20_svg__paint0_linear_32982_71567" x1="10" y1="1" x2="10" y2="19"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#21973B"></stop>
-                            <stop offset="1" stop-color="#128540"></stop>
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <h1 class="font-bold ml-2">4.1 (33K+ ratings) . ₹150 for two</h1>
-            </div>
-            <p class="text-orange-600 underline font-semibold">Dosa,Idli,Poori,Vada...</p>
-            <p class="font-bold">20-25 mins</p>
+  
+    <!-- Restaurant Header Section -->
+    <section class="px-4 sm:px-8 lg:px-16 py-10 bg-gradient-to-r from-green-100 to-green-50 mt-16">
+      <!-- Breadcrumb Navigation -->
+      <nav class="text-xs text-slate-500 mb-2" aria-label="Breadcrumb">
+        <ol class="flex space-x-1">
+          <li>
+            <a routerLink="/home" class="hover:text-green-600 transition-colors duration-300">Home</a>
+          </li>
+          <li>
+            <span>/</span>
+          </li>
+          <li>
+            <a href="#" class="hover:text-green-600 transition-colors duration-300">Hyderabad</a>
+          </li>
+          <li>
+            <span>/</span>
+          </li>
+          <li aria-current="page" class="text-green-700 font-semibold">Everything' Restaurant</li>
+        </ol>
+      </nav>
+  
+      <!-- Restaurant Title and Details -->
+      <div class="bg-white shadow-lg rounded-3xl p-6 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 sm:space-x-6">
+        <!-- Restaurant Info -->
+        <div class="flex items-center space-x-4">
+          <!-- Rating Icon and Info -->
+          <div class="flex items-center space-x-2">
+            <!-- Star Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-yellow-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.167c.969 0 1.371 1.24.588 1.81l-3.377 2.455a1 1 0 00-.364 1.118l1.286 3.958c.3.921-.755 1.688-1.54 1.118L10 13.347l-3.377 2.455c-.784.57-1.838-.197-1.54-1.118l1.286-3.958a1 1 0 00-.364-1.118L2.488 9.385c-.783-.57-.38-1.81.588-1.81h4.167a1 1 0 00.95-.69l1.286-3.958z"
+              />
+            </svg>
+            <span class="text-lg font-semibold">4.1 (33K+ ratings)</span>
+          </div>
+  
+          <!-- Price Info -->
+          <div class="flex items-center space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-green-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8c-1.657 0-3 1.343-3 3v4m0 0h6m-6 0a3 3 0 003 3h3a3 3 0 003-3v-4a3 3 0 00-3-3h-3a3 3 0 00-3 3z"
+              />
+            </svg>
+            <span class="text-lg font-semibold">₹150 for two</span>
+          </div>
         </div>
-    </section>
-    <section class="px-96 pb-10">
-        <h1 class="font-bold text-2xl mb-4">Deals for you</h1>
-        <div class="overflow-y-scroll no-scrollbar">
-            <div class="flex">
-                <div class="border-2 p-4 flex border-slate-200 rounded-xl mr-4 min-w-[300px]">
-                    <img class="size-16 mr-2"
-                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/rng/md/ads/production/d07196b25b85d1fd9951e10c255ab737" />
-                    <div>
-                        <h1 class="font-bold">Extra 25₹ Off</h1>
-                        <p>APPLICABLE OVER & ABOVE COUPONS</p>
-                    </div>
-                </div>
-                <div class="border-2 p-4 flex border-slate-200 rounded-xl mr-4 min-w-[300px]">
-                    <img class="size-16 mr-2"
-                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/rng/md/ads/production/sxpqfawqimysnby0vpfe" />
-                    <div>
-                        <h1 class="font-bold">Buy One Get One Free</h1>
-                        <p>USE BOGO</p>
-                    </div>
-                </div>
-                <div class="border-2 p-4 flex border-slate-200 rounded-xl mr-4 min-w-[300px]">
-                    <img class="size-16 mr-2"
-                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/MARKETING_BANNERS/IMAGES/OFFERS/2024/10/21/b115666c-94e4-4f6d-819d-c6e4e464326a_Axis.png" />
-                    <div>
-                        <h1 class="font-bold">Extra 10% Off</h1>
-                        <p>USE AXISFEXT</p>
-                    </div>
-                </div>
-                <div class="border-2 p-4 flex border-slate-200 rounded-xl mr-4 min-w-[300px]">
-                    <img class="size-16 mr-2"
-                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/rng/md/ads/production/d07196b25b85d1fd9951e10c255ab737" />
-                    <div>
-                        <h1 class="font-bold">Extra 25₹ Off</h1>
-                        <p>APPLICABLE OVER & ABOVE COUPONS</p>
-                    </div>
-                </div>
-            </div>
+  
+        <!-- Cuisine and Delivery Time -->
+        <div class="text-center sm:text-left">
+          <p class="text-orange-600 underline font-semibold">Dosa, Idli, Poori, Vada...</p>
+          <p class="font-bold text-green-700">20-25 mins Delivery</p>
         </div>
+      </div>
     </section>
-    <section class="px-96 pb-10">
-        <h1 class="font-bold text-2xl mb-4">Top Picks</h1>
-        <div class="flex overflow-y-scroll no-scrollbar">
-        
-            <div *ngFor="let item of dishes">
-                <div
-                    [ngStyle]="{'background-image': 'url(' + item.src + ')'}"
-                    class="p-4 bg-cover bg-center text-white min-w-80 rounded-xl mr-4 min-h-[290px] flex flex-col justify-between">
-                    
-                    <p class="text-xl bg-black bg-opacity-70 p-1 rounded">{{item.title}}</p>
-                    
-                    <div class="flex justify-between items-center mt-2 bg-black bg-opacity-70 p-2 rounded">
-                        <p>₹{{item.price}}</p>
-                        <button (click)="cart1(item)" class="bg-white text-green-600 font-bold p-2 rounded-md">Add Item</button>
-                    </div>
-                </div>
-            </div>   
+  
+    <!-- Deals Section -->
+    <section class="px-4 sm:px-8 lg:px-16 pb-10">
+      <h2 class="text-2xl font-bold mb-6">Deals for You</h2>
+      <div class="flex space-x-4 overflow-x-auto no-scrollbar">
+        <!-- Deal Card -->
+        <div class="min-w-[250px] bg-white shadow-md rounded-xl p-4 flex items-center space-x-4 transform hover:scale-105 transition-transform duration-300">
+          <img
+            class="w-16 h-16 object-contain rounded"
+            src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/rng/md/ads/production/d07196b25b85d1fd9951e10c255ab737"
+            alt="Extra ₹25 Off"
+          />
+          <div>
+            <h3 class="font-bold text-lg">Extra ₹25 Off</h3>
+            <p class="text-sm text-gray-600">Applicable on orders above ₹200</p>
+          </div>
         </div>
+  
+        <!-- Repeat Deal Cards as Needed -->
+        <div class="min-w-[250px] bg-white shadow-md rounded-xl p-4 flex items-center space-x-4 transform hover:scale-105 transition-transform duration-300">
+          <img
+            class="w-16 h-16 object-contain rounded"
+            src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/rng/md/ads/production/sxpqfawqimysnby0vpfe"
+            alt="Buy One Get One Free"
+          />
+          <div>
+            <h3 class="font-bold text-lg">Buy One Get One Free</h3>
+            <p class="text-sm text-gray-600">Use code BOGO</p>
+          </div>
+        </div>
+  
+        <div class="min-w-[250px] bg-white shadow-md rounded-xl p-4 flex items-center space-x-4 transform hover:scale-105 transition-transform duration-300">
+          <img
+            class="w-16 h-16 object-contain rounded"
+            src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/MARKETING_BANNERS/IMAGES/OFFERS/2024/10/21/b115666c-94e4-4f6d-819d-c6e4e464326a_Axis.png"
+            alt="Extra 10% Off"
+          />
+          <div>
+            <h3 class="font-bold text-lg">Extra 10% Off</h3>
+            <p class="text-sm text-gray-600">Use code AXISFEXT</p>
+          </div>
+        </div>
+  
+        <div class="min-w-[250px] bg-white shadow-md rounded-xl p-4 flex items-center space-x-4 transform hover:scale-105 transition-transform duration-300">
+          <img
+            class="w-16 h-16 object-contain rounded"
+            src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/rng/md/ads/production/d07196b25b85d1fd9951e10c255ab737"
+            alt="Extra ₹25 Off"
+          />
+          <div>
+            <h3 class="font-bold text-lg">Extra ₹25 Off</h3>
+            <p class="text-sm text-gray-600">Applicable on orders above ₹200</p>
+          </div>
+        </div>
+      </div>
     </section>
-    
-    
-</main>
-
-
+  
+    <!-- Top Picks Section -->
+    <section class="px-4 sm:px-8 lg:px-16 pb-10">
+      <h2 class="text-2xl font-bold mb-6">Top Picks</h2>
+      <div class="flex space-x-4 overflow-x-auto no-scrollbar">
+        <!-- Dish Card -->
+        <div
+          *ngFor="let item of dishes; trackBy: trackByTitle"
+          [ngStyle]="{ 'background-image': 'url(' + item.src + ')' }"
+          class="min-w-[250px] bg-cover bg-center rounded-xl p-4 flex flex-col justify-between text-white shadow-lg transform hover:scale-105 transition-transform duration-300"
+        >
+          <!-- Dish Title -->
+          <p class="text-xl bg-black bg-opacity-60 p-2 rounded">{{ item.title }}</p>
+  
+          <!-- Price and Add Button -->
+          <div class="flex justify-between items-center mt-4 bg-black bg-opacity-60 p-2 rounded">
+            <p class="text-lg font-semibold">₹{{ item.price }}</p>
+            <button
+              (click)="cart1(item)"
+              class="bg-white text-green-600 font-bold py-1 px-3 rounded-md hover:bg-gray-100 transition-colors duration-300 flex items-center"
+            >
+              <i class="fas fa-plus mr-2"></i> Add Item
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Footer (Optional) -->
+    <!-- <app-footer></app-footer> -->
+  </main>
+  

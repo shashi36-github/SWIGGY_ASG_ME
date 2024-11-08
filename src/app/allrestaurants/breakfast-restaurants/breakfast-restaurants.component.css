@@ -1,0 +1,56 @@
+/* breakfast-restaurants.component.css */
+
+/* Hide scrollbar for grid containers */
+.grid::-webkit-scrollbar {
+    display: none;
+}
+
+.grid {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Custom Font Family (ensure the font file is correctly placed) */
+@font-face {
+    font-family: 'Gilroy_Bold';
+    src: url('/assets/fonts/Gilroy-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Transition for image overlays */
+.relative img:hover {
+    transform: scale(1.05);
+}
+
+.relative img {
+    transition: transform 0.3s ease;
+}
+
+/* Ensure links have no default styles and inherit colors */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+    nav[aria-label="Breadcrumb"] ol {
+        font-size: 0.75rem;
+    }
+
+    /* Adjust filter buttons on smaller screens */
+    .flex-wrap button {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    /* Adjust restaurant card image heights */
+    .relative img {
+        height: 10rem; /* Adjust as needed */
+    }
+}

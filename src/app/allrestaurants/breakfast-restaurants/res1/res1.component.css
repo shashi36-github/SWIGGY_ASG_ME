@@ -1,0 +1,26 @@
+/* res1.component.css */
+
+/* Hide scrollbar for specific elements */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* Size utility for images */
+  .size-16 {
+    width: 4rem;
+    height: 4rem;
+  }
+  
+  /* Responsive Adjustments (if needed) */
+  @media (max-width: 640px) {
+    .px-96 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  
